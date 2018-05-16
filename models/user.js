@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 let Schema=mongoose.Schema;
 
 const UserSchema=new Schema({
-    username:{
+    email:{
         type:String,
         require:true
     },
