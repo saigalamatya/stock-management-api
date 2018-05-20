@@ -1,17 +1,17 @@
-const mongoose=require('mongoose');
-let Schema=mongoose.Schema;
+const mongoose = require('mongoose');
+let Schema = mongoose.Schema;
 
-const UserSchema=new Schema({
-    email:{
-        type:String,
-        require:true
+const UserSchema = new Schema({
+    email: {
+        type: String,
+        required: true
     },
-    password:{
-        type:String,
-        require:true
+    password: {
+        type: String,
+        required: true
     },
-    active:Boolean,
-    role:String
+    active: Boolean,
+    role: String
 });
 
-module.exports=mongoose.model("CreateUser",UserSchema);
+module.exports = mongoose.model("CreateUser", UserSchema);

@@ -12,7 +12,8 @@ const CreateUser = require('../models/user');
 router.post('/login', (req, res) => {
     console.log(req.body)
     let email=req.body.email;
-    let password=req.body.Password;
+    let password=req.body.password;
+    console.log(email, password, 'asdasdas');
     authService.singIn(email,password)
     .then(user=>{
         if(!user){
@@ -22,6 +23,7 @@ router.post('/login', (req, res) => {
             })
         }
         if(password!==user.password){
+            console.log('password', password, 'user.password', user.password);
            return res.json({
                 success:false,
                 message:"Ohh snap ! username and password didnot matched"
