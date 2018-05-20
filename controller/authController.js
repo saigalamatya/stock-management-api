@@ -15,6 +15,7 @@ router.post('/login', (req, res) => {
     let password=req.body.Password;
     authService.singIn(email,password)
     .then(user=>{
+        console.log(user)
         if(!user){
             return res.status(401).json({
                 success:false,
@@ -30,22 +31,14 @@ router.post('/login', (req, res) => {
     var token=jwt.sign({email:user.email,id:user.id},config.signature,{"expiresIn":7200})
         res.status(200).json({
             success:true,
-            data:user,
-            token
+            message:"Enjoy your token ! Token expires in a day",
+            token:token
         })
     })
     .catch(error=>{
         console.log(error)
     })
-    // CreateUser.findOne({email:req.body.email},(err,user)=>{
-    //     console.log(user,"above if block")
-    //     if(user){
-    //         res.status(200).json({
-    //             data:user,
-    //             sucess:true
-    //         })
-    //     }
-    // })
+ 
    
 });
 
