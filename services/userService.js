@@ -1,8 +1,8 @@
 
-
-
 let userService=(()=>{
     let CreateUser=require('../models/user');
+
+    let Users = require('../models/user');
    
     async function fetchByEmail(email){
         return CreateUser.findOne({email:email});    
@@ -26,11 +26,14 @@ let userService=(()=>{
         
     }
 
-
+    async function getAllUsers() {
+        return await Users.find();
+    }
 
     return {
         fetchByEmail:fetchByEmail,
-        checkPassword:checkPassword
+        checkPassword:checkPassword,
+        getAllUsers: getAllUsers
     }
 
 })();
