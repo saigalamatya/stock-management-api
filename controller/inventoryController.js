@@ -7,7 +7,7 @@ const config = require('../config');
 
 const inventoryService = require('../services/inventoryService');
 
-router.post('/', (req, res) => {
+router.post('/create', (req, res) => {
   console.log('inside dashboard');
   console.log(req.body);
   inventoryService.createInventory(req.body)
