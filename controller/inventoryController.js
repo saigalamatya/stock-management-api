@@ -26,6 +26,25 @@ router.post('/create', (req, res) => {
     })
 });
 
+router.get('/',(req, res) => {
+  console.log('inside get inventory');
+  inventoryService.fetchAllInventory()
+    .then(data => {
+      res.status(201).json({
+        message: "Fetching inventory successful",
+        success: true,
+        data
+      })
+    })
+    .catch(err => {
+      res.json({
+        message: "Can't fetch inventory",
+        success: false,
+        error: err
+      })
+    })
+});
+
 router.delete('/:inventoryID', (req, res) => {
   console.log('inside delete inventory');
   inventoryService.deleteInventory(req.params.inventoryId)
@@ -41,6 +60,6 @@ router.delete('/:inventoryID', (req, res) => {
         success: false
       })
     })
-})
+});
 
 module.exports = router;

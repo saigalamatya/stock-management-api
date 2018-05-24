@@ -14,12 +14,17 @@ var inventoryService = (() => {
     })
   }
 
+  async function fetchAllInventory() {
+    return await InventoryModel.find();
+  }
+
   async function deleteInventory(id) {
     return await InventoryModel.findByIdAndRemove(id);
   }
 
   return {
     createInventory: createInventory,
+    fetchAllInventory: fetchAllInventory,
     deleteInventory: deleteInventory
   }
 })();
