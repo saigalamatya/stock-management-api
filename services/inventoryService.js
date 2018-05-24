@@ -18,6 +18,24 @@ var inventoryService = (() => {
     return await InventoryModel.find();
   }
 
+  async function fetchInventoryById(inventoryId) {
+    return await InventoryModel.findById(inventoryId);
+  }
+
+  // async function editInventory(body, inventoryId) {
+  //   return await InventoryModel.findByIdAndUpdate(inventoryId, {
+  //     $set: {
+  //       productName: body.productName,
+  //       quantity: body.quantity,
+  //       measurement: body.measurement,
+  //       originalPrice: body.originalPrice,
+  //       sellingPrice: body.sellingPrice,
+  //       profit: body.profit,
+  //       supplier: body.supplier
+  //     }
+  //   });
+  // }
+
   async function deleteInventory(id) {
     return await InventoryModel.findByIdAndRemove(id);
   }
@@ -25,7 +43,9 @@ var inventoryService = (() => {
   return {
     createInventory: createInventory,
     fetchAllInventory: fetchAllInventory,
-    deleteInventory: deleteInventory
+    fetchInventoryById: fetchInventoryById,
+    deleteInventory: deleteInventory,
+    // editInventory: editInventory
   }
 })();
 
