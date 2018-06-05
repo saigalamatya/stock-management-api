@@ -9,7 +9,7 @@ const inventoryController = require('../controller/inventoryController');
 const userController = require('../controller/userController');
 
 router.use('/auth', authController);
-router.use('/inventory', inventoryController);
+router.use('/inventory', authenticate, inventoryController);
 router.use('/supplier', authenticate, supplierController);
 router.use('/users', authenticate, userController);
 
